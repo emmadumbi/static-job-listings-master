@@ -86,6 +86,8 @@ function addFilter() {
         filterTag.appendChild(removeBtn);
         filter.appendChild(filterTag);
         filterContainer.style.display = "flex";
+
+        filterJobs();
       }
     });
   });
@@ -98,4 +100,30 @@ function removeFilterTag(tag, filterTagElement) {
   if (selectedFilters.length === 0) {
     filterContainer.style.display = "none";
   }
+
+  filterJobs();
 }
+
+function filterJobs() {
+  document.querySelectorAll("#job-listings > div").forEach((jobCard) => {
+    const jobTags = Array.from(jobCard.querySelectorAll(".tags button")).map(
+      (btn) => btn.textContent
+    );
+
+    const matchesAllFilters = selectedFilters.every((filter) =>
+      jobTags.includes(filter)
+    );
+
+    jobCard.style.display = matchesAllFilters ? "block" : "none";
+  });
+}
+
+clearBtn.addEventListener("click", () => {
+  selectedFilters = [];
+  filter.innerHTML = "";
+  filterContainer.style.display = "none";
+
+  document.querySelectorAll("#job-listings > div").forEach((jobCard) => {
+    jobCard.style.display = "block";
+  });
+});
