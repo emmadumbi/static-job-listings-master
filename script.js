@@ -12,14 +12,14 @@ let selectedFilters = [];
   const data = await res.json();
   data.forEach((job) => {
     const jobCard = document.createElement("div");
-    jobCard.classList.add("job-card");
+    jobCard.classList.add("jobCard");
     jobCard.innerHTML = `
-      <img src="${job.logo}" alt="company logo"/>
+      <img class="company-logo" src="${job.logo}" alt="company logo"/>
       <div class="heading">
         <h1>${job.company}</h1>
         <div class="stat"></div>
       </div>
-      <p>${job.position}</p>
+      <p class="jobPosition">${job.position}</p>
       <span>${job.postedAt}</span>
       <span>${job.contract}</span>
       <span>${job.location}</span>
@@ -52,14 +52,14 @@ let selectedFilters = [];
 
     if (job.new) {
       const newJob = document.createElement("span");
-      newJob.textContent = "New!";
+      newJob.textContent = "NEW!";
       newJob.classList.add("new-Job");
       jobCard.querySelector(".stat").appendChild(newJob);
     }
 
     if (job.featured) {
       const featuredJob = document.createElement("span");
-      featuredJob.textContent = "Featured";
+      featuredJob.textContent = "FEATURED";
       featuredJob.classList.add("featured-Job");
       jobCard.querySelector(".stat").appendChild(featuredJob);
     }

@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+:root {
+  /* Colors */
+  /* Primary */
+
+  --Desaturated-Dark-Cyan: hsl(180, 29%, 50%);
+
+  /* Neutral */
+
+  --Light-Grayish-Cyan-Background: hsl(180, 52%, 96%);
+  --Light-Grayish-Cyan-FilterTablets: hsl(180, 31%, 95%);
+  --Dark-Grayish-Cyan: hsl(180, 8%, 52%);
+  --Very-Dark-Grayish-Cyan: hsl(180, 14%, 20%);
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--Light-Grayish-Cyan-Background);
+}
+
+.header {
+  background-image: url(./images/bg-header-mobile.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 10rem;
+}
+
+.main {
+  width: min(100% - 15%, 1440px);
+  margin-inline: auto;
+  padding-block: 2rem;
+}
+
+.jobCard {
+  background-color: #fff;
+  margin-block: 1rem;
+  padding-inline: 1rem;
+}
+
+.company-logo {
+  width: 16%;
+  object-fit: cover;
+  position: relative;
+  top: -20px;
+  left: 6px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+  margin-block-end: 1rem;
+  margin-block-start: -0.5rem;
+}
+
+.heading h1 {
+  font-size: 1rem;
+}
+
+.new-Job {
+  background-color: var(--Desaturated-Dark-Cyan);
+  padding: 0.3rem 0.4rem;
+  font-weight: 700;
+  border-radius: 0.7rem;
+  color: #fff;
+  margin-inline-end: 0.5rem;
+  font-size: 15px;
+}
+
+.featured-Job {
+  background-color: var(--Very-Dark-Grayish-Cyan);
+  color: var(--Light-Grayish-Cyan-FilterTablets);
+  padding: 0.3rem 0.4rem;
+  border-radius: 0.7rem;
+  font-size: 15px;
+}
+
+.jobPosition {
+  font-weight: 700;
+  font-size: 15px;
+}
