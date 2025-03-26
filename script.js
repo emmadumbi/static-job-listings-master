@@ -20,15 +20,14 @@ let selectedFilters = [];
         <div class="stat"></div>
       </div>
       <p class="jobPosition">${job.position}</p>
-      <span>${job.postedAt}</span>
-      <span>${job.contract}</span>
-      <span>${job.location}</span>
+      <ul class="availability">
+        <li>${job.postedAt}</li>
+        <li>${job.contract}</li>
+        <li>${job.location}</li>
+      </ul> 
       <hr>
       <div class="tags"></div>
-
     `;
-
-    const types = job.position.split(" ");
 
     const roleBtn = document.createElement("button");
     roleBtn.textContent = job.role;
@@ -39,15 +38,15 @@ let selectedFilters = [];
     jobCard.querySelector(".tags").appendChild(levelBtn);
 
     job.languages.forEach((lang) => {
-      const langbtn = document.createElement("button");
-      langbtn.textContent = lang;
-      jobCard.querySelector(".tags").appendChild(langbtn);
+      const langBtn = document.createElement("button");
+      langBtn.textContent = lang;
+      jobCard.querySelector(".tags").appendChild(langBtn);
     });
 
     job.tools.forEach((tool) => {
-      const toolbtn = document.createElement("button");
-      toolbtn.textContent = tool;
-      jobCard.querySelector(".tags").appendChild(toolbtn);
+      const toolBtn = document.createElement("button");
+      toolBtn.textContent = tool;
+      jobCard.querySelector(".tags").appendChild(toolBtn);
     });
 
     if (job.new) {
@@ -61,6 +60,7 @@ let selectedFilters = [];
       const featuredJob = document.createElement("span");
       featuredJob.textContent = "FEATURED";
       featuredJob.classList.add("featured-Job");
+      jobCard.classList.add("featured");
       jobCard.querySelector(".stat").appendChild(featuredJob);
     }
 

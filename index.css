@@ -12,6 +12,8 @@
   --Light-Grayish-Cyan-FilterTablets: hsl(180, 31%, 95%);
   --Dark-Grayish-Cyan: hsl(180, 8%, 52%);
   --Very-Dark-Grayish-Cyan: hsl(180, 14%, 20%);
+
+  --shadow: 0 5px 20px 10px hsl(180, 29%, 50%, 0.2);
 }
 
 *,
@@ -23,6 +25,10 @@
   font-family: "League Spartan", sans-serif;
 }
 
+html {
+  font-size: 0.9375rem;
+}
+
 body {
   min-height: 100dvh;
   background-color: var(--Light-Grayish-Cyan-Background);
@@ -32,19 +38,47 @@ body {
   background-image: url(./images/bg-header-mobile.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 10rem;
+  min-height: 10.3rem;
+}
+
+.filter-container {
+  position: relative;
+  background: white;
+  height: auto;
+  padding: 1rem;
+  bottom: 60px;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  max-width: 1000px;
+  display: none;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .main {
   width: min(100% - 15%, 1440px);
   margin-inline: auto;
-  padding-block: 2rem;
+  padding-block: 2.5rem;
 }
 
 .jobCard {
   background-color: #fff;
-  margin-block: 1rem;
-  padding-inline: 1rem;
+  padding-inline: 1.2rem;
+  margin-block-start: 1rem;
+  margin-block-end: 3.5rem;
+  padding-block-end: 1.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 7px;
+}
+
+.featured {
+  border-left: 5px solid var(--Desaturated-Dark-Cyan);
 }
 
 .company-logo {
@@ -58,13 +92,14 @@ body {
 .heading {
   display: flex;
   align-items: center;
-  gap: 1.3rem;
+  gap: 2rem;
   margin-block-end: 1rem;
-  margin-block-start: -0.5rem;
+  margin-block-start: -0.65rem;
 }
 
 .heading h1 {
   font-size: 1rem;
+  color: var(--Desaturated-Dark-Cyan);
 }
 
 .new-Job {
@@ -74,7 +109,7 @@ body {
   border-radius: 0.7rem;
   color: #fff;
   margin-inline-end: 0.5rem;
-  font-size: 15px;
+  display: inline-block;
 }
 
 .featured-Job {
@@ -82,10 +117,52 @@ body {
   color: var(--Light-Grayish-Cyan-FilterTablets);
   padding: 0.3rem 0.4rem;
   border-radius: 0.7rem;
-  font-size: 15px;
+  display: inline-block;
 }
 
 .jobPosition {
   font-weight: 700;
-  font-size: 15px;
+  margin-block-end: 1rem;
+}
+
+.availability {
+  display: flex;
+  color: var(--Dark-Grayish-Cyan);
+  margin-block-end: 1.4rem;
+}
+
+.availability li {
+  margin-inline-end: 2rem;
+  font-weight: 500;
+}
+
+.availability li:first-child {
+  list-style: none;
+}
+
+hr {
+  margin-block-end: 1rem;
+  opacity: 0.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+
+.tags button {
+  border: none;
+  background: var(--Light-Grayish-Cyan-FilterTablets);
+  padding: 0.8em;
+  border-radius: 5px;
+  font-weight: 700;
+  color: var(--Desaturated-Dark-Cyan);
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+.tags button:hover {
+  color: var(--Light-Grayish-Cyan-FilterTablets);
+  background-color: var(--Desaturated-Dark-Cyan);
 }
