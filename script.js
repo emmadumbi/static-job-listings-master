@@ -14,17 +14,23 @@ let selectedFilters = [];
     const jobCard = document.createElement("div");
     jobCard.classList.add("jobCard");
     jobCard.innerHTML = `
-      <img class="company-logo" src="${job.logo}" alt="company logo"/>
-      <div class="heading">
-        <h1>${job.company}</h1>
-        <div class="stat"></div>
+      <div class="heading-container">
+        <div>
+          <img class="company-logo" src="${job.logo}" alt="company logo"/>
+        </div>
+        <div>
+          <div class="heading">
+            <h1>${job.company}</h1>
+            <div class="stat"></div>
+          </div>
+          <p class="jobPosition">${job.position}</p>
+          <ul class="availability">
+            <li>${job.postedAt}</li>
+            <li>${job.contract}</li>
+            <li>${job.location}</li>
+          </ul> 
+         </div> 
       </div>
-      <p class="jobPosition">${job.position}</p>
-      <ul class="availability">
-        <li>${job.postedAt}</li>
-        <li>${job.contract}</li>
-        <li>${job.location}</li>
-      </ul> 
       <hr>
       <div class="tags"></div>
     `;
@@ -76,15 +82,24 @@ function addFilter() {
         selectedFilters.push(btn.textContent);
         const filterTag = document.createElement("button");
         filterTag.textContent = btn.textContent;
+        filterTag.classList.add("tagBtn");
 
         const removeBtn = document.createElement("button");
+        removeBtn.classList.add("clearTag");
         removeBtn.innerHTML = `<img src="images/icon-remove.svg" alt="remove tag button"/>`;
         removeBtn.addEventListener("click", () => {
           removeFilterTag(btn.textContent, filterTag);
+          document
+            .querySelectorAll("#job-listings > div")
+            .forEach((jobCard) => {
+              jobCard.style.display = "flex";
+              jobCard.classList.remove("hidden");
+            });
         });
 
         filterTag.appendChild(removeBtn);
         filter.appendChild(filterTag);
+        filter.classList.add("filter");
         filterContainer.style.display = "flex";
 
         filterJobs();
@@ -114,7 +129,11 @@ function filterJobs() {
       jobTags.includes(filter)
     );
 
-    jobCard.style.display = matchesAllFilters ? "block" : "none";
+    if (matchesAllFilters) {
+      jobCard.style.display = "flex";
+    } else {
+      jobCard.classList.add("hidden");
+    }
   });
 }
 
@@ -124,6 +143,7 @@ clearBtn.addEventListener("click", () => {
   filterContainer.style.display = "none";
 
   document.querySelectorAll("#job-listings > div").forEach((jobCard) => {
-    jobCard.style.display = "block";
+    jobCard.style.display = "flex";
+    jobCard.classList.remove("hidden");
   });
 });

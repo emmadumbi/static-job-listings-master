@@ -34,10 +34,16 @@ body {
   background-color: var(--Light-Grayish-Cyan-Background);
 }
 
+button {
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
 .header {
   background-image: url(./images/bg-header-mobile.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   min-height: 10.3rem;
 }
 
@@ -50,6 +56,7 @@ body {
   border-radius: 5px;
   box-shadow: var(--shadow);
   max-width: 1000px;
+  margin-inline: auto;
   display: none;
   justify-content: space-between;
   gap: 1em;
@@ -61,6 +68,41 @@ body {
   gap: 1rem;
 }
 
+.tagBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border: none;
+  background: var(--Light-Grayish-Cyan-FilterTablets);
+  padding-inline-start: 0.5em;
+  border-radius: 5px;
+  font-weight: 700;
+  color: var(--Desaturated-Dark-Cyan);
+}
+
+.tagBtn:hover {
+  background-color: var(--Desaturated-Dark-Cyan);
+  color: var(--Light-Grayish-Cyan-FilterTablets);
+}
+
+.clearTag {
+  border: none;
+  background-color: var(--Desaturated-Dark-Cyan);
+  padding: 0.5em;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.clearAll {
+  border: none;
+  align-self: center;
+  color: var(--Dark-Grayish-Cyan);
+  background: none;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
 .main {
   width: min(100% - 15%, 1440px);
   margin-inline: auto;
@@ -68,13 +110,22 @@ body {
 }
 
 .jobCard {
+  flex-direction: column;
   background-color: #fff;
-  padding-inline: 1.2rem;
+  padding-inline: 1rem;
   margin-block-start: 1rem;
   margin-block-end: 3.5rem;
-  padding-block-end: 1.5rem;
+  padding-block: 1.5rem;
   box-shadow: var(--shadow);
   border-radius: 7px;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.hidden {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
 }
 
 .featured {
@@ -82,10 +133,10 @@ body {
 }
 
 .company-logo {
-  width: 16%;
+  width: 18%;
   object-fit: cover;
   position: relative;
-  top: -20px;
+  top: -45px;
   left: 6px;
 }
 
@@ -94,7 +145,6 @@ body {
   align-items: center;
   gap: 2rem;
   margin-block-end: 1rem;
-  margin-block-start: -0.65rem;
 }
 
 .heading h1 {
@@ -132,7 +182,7 @@ body {
 }
 
 .availability li {
-  margin-inline-end: 2rem;
+  margin-inline-end: 1.5rem;
   font-weight: 500;
 }
 
@@ -158,11 +208,43 @@ hr {
   border-radius: 5px;
   font-weight: 700;
   color: var(--Desaturated-Dark-Cyan);
-  transition: 0.1s ease;
-  cursor: pointer;
 }
 
 .tags button:hover {
   color: var(--Light-Grayish-Cyan-FilterTablets);
   background-color: var(--Desaturated-Dark-Cyan);
+}
+
+@media (min-width: 43.75rem) {
+  .header {
+    background-image: url(./images/bg-header-desktop.svg);
+  }
+
+  .heading-container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .company-logo {
+    position: initial;
+    width: auto;
+    display: block;
+  }
+}
+
+@media (min-width: 62.5rem) {
+  .jobCard {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
