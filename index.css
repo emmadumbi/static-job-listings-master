@@ -104,7 +104,7 @@ button {
 }
 
 .main {
-  width: min(100% - 15%, 1440px);
+  width: min(100% - 15%, 1100px);
   margin-inline: auto;
   padding-block: 2.5rem;
 }
@@ -215,7 +215,7 @@ hr {
   background-color: var(--Desaturated-Dark-Cyan);
 }
 
-@media (min-width: 43.75rem) {
+@media (min-width: 700px) {
   .header {
     background-image: url(./images/bg-header-desktop.svg);
   }
@@ -232,7 +232,7 @@ hr {
   }
 }
 
-@media (min-width: 62.5rem) {
+@media (min-width: 1000px) {
   .jobCard {
     flex-direction: row;
     justify-content: space-between;
