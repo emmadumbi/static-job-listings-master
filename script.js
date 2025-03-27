@@ -89,12 +89,6 @@ function addFilter() {
         removeBtn.innerHTML = `<img src="images/icon-remove.svg" alt="remove tag button"/>`;
         removeBtn.addEventListener("click", () => {
           removeFilterTag(btn.textContent, filterTag);
-          document
-            .querySelectorAll("#job-listings > div")
-            .forEach((jobCard) => {
-              jobCard.style.display = "flex";
-              jobCard.classList.remove("hidden");
-            });
         });
 
         filterTag.appendChild(removeBtn);
@@ -129,11 +123,7 @@ function filterJobs() {
       jobTags.includes(filter)
     );
 
-    if (matchesAllFilters) {
-      jobCard.style.display = "flex";
-    } else {
-      jobCard.classList.add("hidden");
-    }
+    jobCard.style.display = matchesAllFilters ? "flex" : "none";
   });
 }
 
@@ -144,6 +134,5 @@ clearBtn.addEventListener("click", () => {
 
   document.querySelectorAll("#job-listings > div").forEach((jobCard) => {
     jobCard.style.display = "flex";
-    jobCard.classList.remove("hidden");
   });
 });
